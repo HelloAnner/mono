@@ -8,7 +8,7 @@ import cn.hutool.log.LogFactory;
  */
 public class Logger {
 
-    private final static Log inner = LogFactory.get("MICRO-SERVICE");
+    private final static Log inner = LogFactory.get("MONO");
 
     public static void info(String format, Object... arguments) {
         inner.info(format, arguments);

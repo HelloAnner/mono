@@ -14,4 +14,12 @@ public class RedisClient {
     public RedisClient(Jedis jedis) {
         this.jedis = jedis;
     }
+
+    public void set(String key, String val) {
+        jedis.set(key, val);
+    }
+
+    public String get(String key) {
+        return jedis.get(key);
+    }
 }

@@ -43,7 +43,7 @@ public class RedisManager {
         jedisPoolConfig.setMaxWait(Duration.ofMillis(MAX_WAIT_MILLIS));
         jedisPoolConfig.setTestOnBorrow(false);
 
-        RedisManager.jedisPool = new JedisPool(jedisPoolConfig, addr, port);
+        RedisManager.jedisPool = new JedisPool(jedisPoolConfig, addr, port, 1000 * 2, auth);
     }
 
 

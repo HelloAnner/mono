@@ -10,12 +10,6 @@ allprojects {
         maven { url 'https://maven.aliyun.com/repository/public' }
     }
 
-    dependencies {
-
-        testImplementation 'junit:junit:4.13.2'
-        testImplementation 'org.easymock:easymock:4.3'
-    }
-
     group = 'com.anner'
     version = '1.0'
     description = 'micro service base'
