@@ -1,0 +1,27 @@
+plugins {
+    id 'java-library'
+}
+
+allprojects {
+    apply plugin: 'java-library'
+    repositories {
+        mavenLocal()
+        google()
+        maven { url 'https://maven.aliyun.com/repository/public' }
+    }
+
+    dependencies {
+        implementation 'com.anner:common:1.0'
+
+        testImplementation 'junit:junit:4.13.2'
+        testImplementation 'org.easymock:easymock:4.3'
+    }
+
+    group = 'com.anner'
+    version = '1.0'
+    description = 'starter'
+    java.sourceCompatibility = JavaVersion.VERSION_1_8
+}
+
+
+

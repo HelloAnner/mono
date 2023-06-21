@@ -7,8 +7,7 @@
 
 
 dependencies {
-    api project(':common-properties')
-
-    implementation 'redis.clients:jedis:3.7.0'
-    implementation 'org.apache.commons:commons-pool2:2.11.1'
+    api project(':common-string')
+    api project(':common-collection')
+    api project(':common-log')
 }

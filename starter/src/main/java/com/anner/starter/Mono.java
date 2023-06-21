@@ -1,9 +1,10 @@
-package com.anner.redis.queue;
+package com.anner.starter;
 
 /**
  * @author anner
  * @version 11.0
  * Created on 2023/6/21
  */
-public class RedisManager {
+public class Mono {
+
 }
