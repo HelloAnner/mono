@@ -48,6 +48,9 @@ public class RedisManager {
 
 
     public static RedisClient apply() {
+        if (jedisPool == null) {
+            throw new IllegalStateException("Redis Pool is not init ");
+        }
         // 申请一个 client 对象
         try {
             return new RedisClient(jedisPool.getResource());

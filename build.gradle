@@ -24,6 +24,7 @@ task mergeJars(type: Jar) {
     from(zipTree('common/common-redis/build/libs/common-redis-1.0.jar'))
     from(zipTree('common/common-reflect/build/libs/common-reflect-1.0.jar'))
     from(zipTree('common/common-properties/build/libs/common-properties-1.0.jar'))
+    from(zipTree('common/common-base/build/libs/common-base-1.0.jar'))
 
     from(zipTree('comm/comm-core/build/libs/comm-core-1.0.jar'))
     // 设置输出的合并 JAR 文件名
