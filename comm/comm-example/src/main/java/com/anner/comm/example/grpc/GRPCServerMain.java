@@ -13,7 +13,8 @@ public class GRPCServerMain {
           GRPCCommServer grpcServer = new GRPCCommServer(50051);
 
           // 注册grpc的服务适配器
-          GRPCAdapterRegistry.registerServiceAdapter(Greeter.class, GreeterServiceAdapter::new);
+          // GRPCAdapterRegistry.registerServiceAdapter(Greeter.class,
+          // GreeterServiceAdapter::new);
 
           // 发布服务
           CommPublisher.create()

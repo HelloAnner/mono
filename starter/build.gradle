@@ -11,7 +11,7 @@ allprojects {
     }
 
     dependencies {
-        implementation 'com.anner:common:1.0'
+        implementation 'com.anner:orion:1.0'
 
         testImplementation 'junit:junit:4.13.2'
         testImplementation 'org.easymock:easymock:4.3'

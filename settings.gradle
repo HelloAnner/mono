@@ -9,10 +9,10 @@
 
 rootProject.name = 'mono'
 
-// 服务通信
-includeBuild 'comm'
+// 服务通信 -  还没有解决 grpc 的 生成代码跨平台依赖问题
+// includeBuild 'comm'
 // 公共底座
-includeBuild 'common'
+includeBuild 'orion'
 // 命名服务
 includeBuild 'naming'
 // 存储框架

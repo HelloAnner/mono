@@ -37,7 +37,8 @@ public class GreeterServiceAdapter extends GreeterImplBase {
 
     @Override
     public StreamObserver<HelloRequestBytes> sayHelloToManyPeople(StreamObserver<HelloReply> responseObserver) {
-        Observer2InputStreamAdapter<HelloRequestBytes> reqAdapter = new Observer2InputStreamAdapter<>(HelloRequestBytes::getName);
+        Observer2InputStreamAdapter<HelloRequestBytes> reqAdapter = new Observer2InputStreamAdapter<>(
+                HelloRequestBytes::getName);
         GRPCAdapterExecutors.submit(() -> {
             try {
                 String res = greeter.sayHelloToManyPeople(CommStreamPipe.wrap(reqAdapter));
@@ -58,8 +59,7 @@ public class GreeterServiceAdapter extends GreeterImplBase {
                 CommStreamPipe result = greeter.sayHelloMultiTimes(request.getName());
                 try (Observer2OutputStreamAdapter<HelloReplyBytes> adapter = new Observer2OutputStreamAdapter<>(
                         bytes -> HelloReplyBytes.newBuilder().setMessage(bytes).build(),
-                        responseObserver
-                )) {
+                        responseObserver)) {
                     result.doWrite(adapter);
                 }
             } catch (Throwable e) {
@@ -72,14 +72,14 @@ public class GreeterServiceAdapter extends GreeterImplBase {
 
     @Override
     public StreamObserver<HelloRequestBytes> sayHelloByStream(StreamObserver<HelloReplyBytes> responseObserver) {
-        Observer2InputStreamAdapter<HelloRequestBytes> reqAdapter = new Observer2InputStreamAdapter<>(HelloRequestBytes::getName);
+        Observer2InputStreamAdapter<HelloRequestBytes> reqAdapter = new Observer2InputStreamAdapter<>(
+                HelloRequestBytes::getName);
         GRPCAdapterExecutors.submit(() -> {
             try {
                 CommStreamPipe result = greeter.sayHelloByStream(CommStreamPipe.wrap(reqAdapter));
                 try (Observer2OutputStreamAdapter<HelloReplyBytes> adapter = new Observer2OutputStreamAdapter<>(
                         bytes -> HelloReplyBytes.newBuilder().setMessage(bytes).build(),
-                        responseObserver
-                )) {
+                        responseObserver)) {
                     result.doWrite(adapter);
                 }
             } catch (Throwable e) {
