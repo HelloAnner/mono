@@ -7,4 +7,19 @@
 
 
 dependencies {
+    implementation project(path: ':orion-reflect')
+    implementation project(path: ':orion-json')
+
+    // Jackson Core
+    implementation 'com.fasterxml.jackson.core:jackson-core:2.13.3'
+
+    // Jackson Databind
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.13.3'
+
+    // Jackson Annotations
+    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.13.3'
+    implementation 'commons-io:commons-io:2.11.0'
+
+
+    testImplementation project(path: ':orion-reflect')
 }

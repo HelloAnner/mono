@@ -1,12 +1,17 @@
 {
-    // "java.configuration.updateBuildConfiguration": "automatic",
+    "java.configuration.updateBuildConfiguration": "automatic",
     "editor.formatOnSave": true,
     "editor.formatOnPaste": true,
     "editor.fontFamily": "JetBrains Mono",
     "editor.fontWeight": "bold",
     "editor.fontSize": 14,
     "editor.lineHeight": 20,
+    "java.format.enabled": true,
     "terminal.integrated.fontFamily": "JetBrains Mono",
     "terminal.integrated.fontWeight": "bold",
-    "java.compile.nullAnalysis.mode": "automatic"
+    "java.compile.nullAnalysis.mode": "automatic",
+    "remote.autoForwardPortsFallback": 0,
+"editor.codeActionsOnSave": {
+    "source.organizeImports": true
+  }
 }

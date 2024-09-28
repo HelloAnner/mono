@@ -38,7 +38,6 @@ public class JSONSerializeUtilsTest {
         assertEquals(new Date(1662695373), data2.getDateValue());
     }
 
-
     @Test
     public void custom() throws Exception {
         SimpleModule module = new SimpleModule();
@@ -58,7 +57,6 @@ public class JSONSerializeUtilsTest {
         assertEquals(data.getFilename(), data2.getFilename());
         assertEquals("hello world / 你好，世界", IOUtils.toString(data2.getInputStream(), StandardCharsets.UTF_8));
     }
-
 
     public static class BaseData {
         private int intValue;
@@ -113,7 +111,8 @@ public class JSONSerializeUtilsTest {
 
     private static class ByteArrayInputStreamSerializer extends JsonSerializer<ByteArrayInputStream> {
         @Override
-        public void serialize(ByteArrayInputStream byteArrayInputStream, JsonGenerator jsonGenerator, SerializerProvider serializerProvider) throws IOException {
+        public void serialize(ByteArrayInputStream byteArrayInputStream, JsonGenerator jsonGenerator,
+                SerializerProvider serializerProvider) throws IOException {
             byte[] bs = Reflect.on(byteArrayInputStream).get("buf");
             jsonGenerator.writeString(Base64.getEncoder().encodeToString(bs));
         }
@@ -121,7 +120,8 @@ public class JSONSerializeUtilsTest {
 
     private static class ByteArrayInputStreamDeserializer extends JsonDeserializer<ByteArrayInputStream> {
         @Override
-        public ByteArrayInputStream deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException, JacksonException {
+        public ByteArrayInputStream deserialize(JsonParser jsonParser, DeserializationContext deserializationContext)
+                throws IOException, JacksonException {
             String s = jsonParser.getValueAsString();
             return new ByteArrayInputStream(Base64.getDecoder().decode(s));
         }

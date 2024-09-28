@@ -7,7 +7,6 @@ import java.util.Collection;
  */
 public class CollectionUtils {
 
-
     public static <E> boolean isEmpty(Collection<E> list) {
         return list == null || list.isEmpty();
     }

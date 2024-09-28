@@ -16,15 +16,15 @@ allprojects {
 
 task mergeJars(type: Jar) {
     // 添加需要合并的 JAR 文件，可以是项目的依赖或自定义的 JAR 文件
-    from(zipTree('common/common-collection/build/libs/common-collection-1.0.jar'))
-    from(zipTree('common/common-log/build/libs/common-log-1.0.jar'))
-    from(zipTree('common/common-json/build/libs/common-json-1.0.jar'))
-    from(zipTree('common/common-redis/build/libs/common-redis-1.0.jar'))
-    from(zipTree('common/common-reflect/build/libs/common-reflect-1.0.jar'))
-    from(zipTree('common/common-properties/build/libs/common-properties-1.0.jar'))
-    from(zipTree('common/common-base/build/libs/common-base-1.0.jar'))
+    from(zipTree('orion/orion-collection/build/libs/orion-collection-1.0.jar'))
+    from(zipTree('orion/orion-log/build/libs/orion-log-1.0.jar'))
+    from(zipTree('orion/orion-json/build/libs/orion-json-1.0.jar'))
+    from(zipTree('orion/orion-redis/build/libs/orion-redis-1.0.jar'))
+    from(zipTree('orion/orion-reflect/build/libs/orion-reflect-1.0.jar'))
+    from(zipTree('orion/orion-properties/build/libs/orion-properties-1.0.jar'))
+    from(zipTree('orion/orion-base/build/libs/orion-base-1.0.jar'))
 
-    from(zipTree('comm/comm-core/build/libs/comm-core-1.0.jar'))
+    // from(zipTree('comm/comm-core/build/libs/comm-core-1.0.jar'))
     // 设置输出的合并 JAR 文件名
     archiveFileName = "${project.name}" + "-1.0.jar"
     destinationDirectory = file("$buildDir/libs")

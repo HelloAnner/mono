@@ -24,7 +24,6 @@ public class Reflect {
     // Static API used as entrance points to the fluent API
     // ---------------------------------------------------------------------
 
-
     /**
      * Wrap a class name.
      * <p>
@@ -111,7 +110,8 @@ public class Reflect {
             }
         }
 
-        // [jOOQ #3392] The accessible flag is set to false by default, also for public members.
+        // [jOOQ #3392] The accessible flag is set to false by default, also for public
+        // members.
         if (!accessible.isAccessible())
             accessible.setAccessible(true);
 
@@ -121,7 +121,6 @@ public class Reflect {
     // ---------------------------------------------------------------------
     // Members
     // ---------------------------------------------------------------------
-
 
     /**
      * The type of the wrapped object.
@@ -274,8 +273,7 @@ public class Reflect {
                 }
 
                 t = t.getSuperclass();
-            }
-            while (t != null);
+            } while (t != null);
 
             throw new ReflectException(e);
         }
@@ -311,8 +309,7 @@ public class Reflect {
             }
 
             t = t.getSuperclass();
-        }
-        while (t != null);
+        } while (t != null);
 
         return result;
     }
@@ -325,8 +322,8 @@ public class Reflect {
      *
      * @param name The method name
      * @return The wrapped method result or the same wrapped object if the
-     * method returns <code>void</code>, to be used for further
-     * reflection.
+     *         method returns <code>void</code>, to be used for further
+     *         reflection.
      * @throws ReflectException If any reflection exception occurred.
      * @see #call(String, Object...)
      */
@@ -367,8 +364,8 @@ public class Reflect {
      * @param name The method name
      * @param args The method arguments
      * @return The wrapped method result or the same wrapped object if the
-     * method returns <code>void</code>, to be used for further
-     * reflection.
+     *         method returns <code>void</code>, to be used for further
+     *         reflection.
      * @throws ReflectException If any reflection exception occurred.
      */
     public Reflect call(String name, Object... args) throws ReflectException {
@@ -414,17 +411,20 @@ public class Reflect {
      * <p>
      * If a public method is found in the class hierarchy, this method is returned.
      * Otherwise a private method with the exact same signature is returned.
-     * If no exact match could be found, we let the {@code NoSuchMethodException} pass through.
+     * If no exact match could be found, we let the {@code NoSuchMethodException}
+     * pass through.
      */
     private Method exactMethod(String name, Class<?>[] types) throws NoSuchMethodException {
         Class<?> t = type();
 
-        // first priority: find a public method with exact signature match in class hierarchy
+        // first priority: find a public method with exact signature match in class
+        // hierarchy
         try {
             return t.getMethod(name, types);
         }
 
-        // second priority: find a private method with exact signature match on declaring class
+        // second priority: find a private method with exact signature match on
+        // declaring class
         catch (NoSuchMethodException e) {
             do {
                 try {
@@ -433,8 +433,7 @@ public class Reflect {
                 }
 
                 t = t.getSuperclass();
-            }
-            while (t != null);
+            } while (t != null);
 
             throw new NoSuchMethodException();
         }
@@ -451,15 +450,18 @@ public class Reflect {
     private Method similarMethod(String name, Class<?>[] types) throws NoSuchMethodException {
         Class<?> t = type();
 
-        // first priority: find a public method with a "similar" signature in class hierarchy
-        // similar interpreted in when primitive argument types are converted to their wrappers
+        // first priority: find a public method with a "similar" signature in class
+        // hierarchy
+        // similar interpreted in when primitive argument types are converted to their
+        // wrappers
         for (Method method : t.getMethods()) {
             if (isSimilarSignature(method, name, types)) {
                 return method;
             }
         }
 
-        // second priority: find a non-public method with a "similar" signature on declaring class
+        // second priority: find a non-public method with a "similar" signature on
+        // declaring class
         do {
             for (Method method : t.getDeclaredMethods()) {
                 if (isSimilarSignature(method, name, types)) {
@@ -468,18 +470,20 @@ public class Reflect {
             }
 
             t = t.getSuperclass();
-        }
-        while (t != null);
+        } while (t != null);
 
-        throw new NoSuchMethodException("No similar method " + name + " with params " + Arrays.toString(types) + " could be found on type " + type() + ".");
+        throw new NoSuchMethodException("No similar method " + name + " with params " + Arrays.toString(types)
+                + " could be found on type " + type() + ".");
     }
 
     /**
      * Determines if a method has a "similar" signature, especially if wrapping
      * primitive argument types would result in an exactly matching signature.
      */
-    private boolean isSimilarSignature(Method possiblyMatchingMethod, String desiredMethodName, Class<?>[] desiredParamTypes) {
-        return possiblyMatchingMethod.getName().equals(desiredMethodName) && match(possiblyMatchingMethod.getParameterTypes(), desiredParamTypes);
+    private boolean isSimilarSignature(Method possiblyMatchingMethod, String desiredMethodName,
+            Class<?>[] desiredParamTypes) {
+        return possiblyMatchingMethod.getName().equals(desiredMethodName)
+                && match(possiblyMatchingMethod.getParameterTypes(), desiredParamTypes);
     }
 
     /**
@@ -607,13 +611,12 @@ public class Reflect {
                         }
                     }
 
-
                     throw e;
                 }
             }
         };
 
-        return (P) Proxy.newProxyInstance(proxyType.getClassLoader(), new Class[]{proxyType}, handler);
+        return (P) Proxy.newProxyInstance(proxyType.getClassLoader(), new Class[] { proxyType }, handler);
     }
 
     /**

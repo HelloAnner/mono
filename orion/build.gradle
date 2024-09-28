@@ -31,6 +31,8 @@ allprojects {
 
     dependencies {
         implementation 'org.jetbrains:annotations:23.0.0'
+        compileOnly 'org.projectlombok:lombok:1.18.24'
+        annotationProcessor 'org.projectlombok:lombok:1.18.24'
 
         testImplementation 'junit:junit:4.13.2'
         testImplementation 'org.easymock:easymock:4.3'
@@ -38,6 +40,6 @@ allprojects {
 
     group = 'com.anner'
     version = '1.0'
-    description = 'common'
+    description = 'orion'
     java.sourceCompatibility = JavaVersion.VERSION_1_8
 }
